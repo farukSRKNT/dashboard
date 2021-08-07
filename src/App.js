@@ -5,9 +5,9 @@ import {
 } from "react-router-dom";
 
 import {
-  Container,
+  Container, ThemeProvider,
 } from "@material-ui/core";
-
+import theme from './theme.js';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header'
 import Home from './pages/Home'
@@ -17,7 +17,7 @@ import Price from './pages/Price';
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
     <Router>
       <div style={{ display: 'flex' }}>
       <Sidebar></Sidebar>
@@ -48,7 +48,7 @@ function App() {
         </div>
       </div>
     </Router>
-    </div>
+    </ThemeProvider>
   );
 }
 
