@@ -9,6 +9,8 @@ import {
     Label
   } from "recharts";
 
+import SimpleSelect from '../SimpleSelect'
+
 const useStyles = makeStyles((theme) => ({
   categoriesWrapper: {
     width: '360px',
@@ -54,7 +56,7 @@ return (
   <div className={classes.categoriesWrapper}>
     <div className={classes.upperBar}>
       <div>Categories</div>
-      <div>This Month</div>
+      <SimpleSelect />
     </div>
     <ResponsiveContainer width={204} height={204}>
       <PieChart>
