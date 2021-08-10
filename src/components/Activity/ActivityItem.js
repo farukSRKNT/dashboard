@@ -29,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
         margin: '0 7px'
     },
     iconWrapper: {
+        position: 'relative',
+        background: 'white',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
