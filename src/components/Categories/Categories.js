@@ -34,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex'
   },
   colorSquare: {
+    marginTop: '7px',
+    marginRight: '5px',
     width: '12px',
     height: '12px',
     borderRadius: '3px'
@@ -84,7 +86,7 @@ return (
                   className={classes.colorSquare}  
                   style={{backgroundColor: COLORS[index]}}
                 />
-                <div>asd</div>
+                <div>{entry.name}</div>
           </div>
         ))}
     </div>
