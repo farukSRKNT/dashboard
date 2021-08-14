@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     search: {
         border: '1px solid #A0BCE4',
         position: 'relative',
+        height: '30px',
         borderRadius: theme.shape.borderRadius,
         backgroundColor: alpha(theme.palette.common.white, 0.15),
         '&:hover': {
@@ -14,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
         },
         marginRight: theme.spacing(2),
         marginLeft: 0,
-        width: '100%',
+        // width: '82px',
         [theme.breakpoints.up('sm')]: {
           marginLeft: theme.spacing(3),
           width: 'auto',
         },
       },
       searchIcon: {
-        padding: theme.spacing(0, 2),
+        padding: '0 10px',
         height: '100%',
         position: 'absolute',
         pointerEvents: 'none',
@@ -30,12 +31,14 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         color: '#A0BCE4'
       },
-      inputRoot: {
+      inputRoot: props => ({
         color: 'inherit',
-      },
+        width: props.width || '100%'
+      }),
       inputInput: {
         color: '#A0BCE4',
-        padding: theme.spacing(1, 1, 1, 0),
+        fontSize: '14px',
+        padding: '8px 6px 6px 0',
         // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
@@ -55,12 +58,13 @@ export default function SearchBar(props) {
             <SearchIcon />
         </div>
         <InputBase
-        placeholder="Search"
+        placeholder={props.placeholder || 'Search'}
         classes={{
             root: classes.inputRoot,
             input: classes.inputInput,
         }}
         inputProps={{ 'aria-label': 'search' }}
+        onChange={props.onChange}
         />
       </div>
     )
