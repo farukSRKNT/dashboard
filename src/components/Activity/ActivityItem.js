@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     messageBox: {
         border: '1px solid #DDE9FB',
         borderRadius: '5px',
-        width: '205px',
+        width: '183px',
         height: 'fit-content',
         padding: '10px 10px 12px'
     },

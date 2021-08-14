@@ -42,6 +42,9 @@ const data = [
 ]
 
 const useStyles = makeStyles((theme) => ({
+    activityWrapper: {
+        width: '25.5%'
+    },
     activityListTitle: {
         fontSize: '20px',
         marginBottom: '20px'
@@ -55,7 +58,7 @@ export default function Activity(Props) {
     const classes = useStyles()
 
     return (
-        <div>
+        <div className={classes.activityWrapper}>
             <div className={classes.activityListTitle} >Activty</div>
             <div className={classes.activityList}>
                 {data.map((activity, index) => (
