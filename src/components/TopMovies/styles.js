@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core";
 
 export default makeStyles((theme) => ({
     moviesWrapper: {
-        width: '363px',
+        width: '40%',
         padding: '30px 23px'
     },
     title: {
