@@ -1,46 +1,33 @@
 import React from 'react';
+import { makeStyles } from "@material-ui/core"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 
-const data = [
-  {
-    name: 'Oct',
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Nov',
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Dec',
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Jan',
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Feb',
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Mar',
-    pv: 3800,
-    amt: 2500,
-  },
-];
+const tickFormatter = (number) => {
+  if (number > 1000000000){
+    return (number/1000000000).toString() + 'B';
+  } else if(number > 1000000){
+    return (number/1000000) + 'M';
+  } else if(number > 1000){
+    return (number/1000).toString() + 'K';
+  } else{
+    return number.toString();
+  }
+}
 
-export default function SimpleBarChart() {
+const useStyles = makeStyles(theme => ({
+}))
+
+
+export default function SimpleBarChart(props) {
+  const classes = useStyles()
+
     return (
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="85%">
         <BarChart
           width={500}
           height={300}
-          data={data}
+          barSize={17}
+          data={props.data}
           margin={{
             top: 20,
             right: 30,
@@ -48,10 +35,10 @@ export default function SimpleBarChart() {
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 1" />
+          <CartesianGrid strokeDasharray="3 1" vertical={false}/>
           <XAxis dataKey="name" />
-          <YAxis />
-          <Bar dataKey="pv" stackId="a" fill="#5AD6B0" />
+          <YAxis tickFormatter={tickFormatter} />
+          <Bar dataKey="pv" stackId="a" fill="#5AD6B0" radius={[10, 10, 0, 0]}/>
         </BarChart>
       </ResponsiveContainer>
     );
