@@ -1,21 +1,22 @@
+import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography, Badge } from '@material-ui/core'
-
 import SearchBar from './SearchBar';
 import NotificationsIcon from "../assets/icons/notifications.svg";
 import ProfilePic from '../assets/images/profile-pic.png'
 
 const useStyles = makeStyles((theme) => ({
     header: {
-       alignItems: 'center',
+      alignItems: 'center',
       display: 'flex',
       justifyContent: 'space-between',
-      width: 'calc(100% - 34px)',
+      flexWrap: 'wrap',
       height: '40px',
       padding: '15px 17px'
     },
     userInfoWrapper: {
         display: 'flex',
+        flexWrap: 'wrap',
     },
     userMovieInfoWrapper: {
     color: '#D8D8D8',
@@ -38,13 +39,13 @@ const useStyles = makeStyles((theme) => ({
     border: '4px solid #E8EBF8',
     borderRadius: '25px', 
     width: '40px', 
-    height: '40px',
-    backgroundColor: 'black'
+    minHeight: '40px',
     }
   }))
 
-export default function Header(props) {
+function Header({movieHistoryData}) {
     const classes = useStyles();
+    console.log(movieHistoryData)
 
     return(
         <div className={classes.header}>
@@ -52,11 +53,12 @@ export default function Header(props) {
           <div className={classes.userInfoWrapper}>
               <div className={classes.userMovieInfoWrapper}>
                 <Typography size="xl" weight="medium">
-                    Reviewed Movies Count:
+                    Reviewed Movies Count: {movieHistoryData ? movieHistoryData.reviewedMovieCount : 0}
                 </Typography>
-                <Typography size="xl" weight="medium">
-                    Last Reviewed Movie:
-                </Typography>
+                {   movieHistoryData && movieHistoryData.lastReviewedMovie &&
+                    <Typography size="xl" weight="medium">
+                        Last Reviewed Movie: {movieHistoryData ? movieHistoryData.lastReviewedMovie : ''}
+                    </Typography>}
               </div>
 
                 <div className={classes.notifications}>
@@ -72,3 +74,14 @@ export default function Header(props) {
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        movieHistoryData: {
+            reviewedMovieCount: state.reviewedMovieCount,
+            lastReviewedMovie: state.lastReviewedMovie
+        }
+    }
+}
+
+export default connect(mapStateToProps)(Header)
