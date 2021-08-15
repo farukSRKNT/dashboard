@@ -9,7 +9,7 @@ import { useEffect } from "react"
 const useStyles = makeStyles(theme => ({
     watchTimeWrapper: {
         height: '351px',
-        width: '60%',
+        width: '100%',
     },
     watchTimeHeader: {
         display: 'flex',
