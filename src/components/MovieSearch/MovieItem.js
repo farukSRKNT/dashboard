@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
     movieName: {
         color: '#4C8DEB',
         maxWidth: '270px',
-        marginRight: 'auto'
+        marginRight: 'auto',
+        cursor: 'pointer' 
     },
     year: {
         display: 'flex',
@@ -41,7 +42,7 @@ export default function MovieItem(props) {
         <div className={classes.movie}>
             <span>{props.index + 1}</span>
             <div className={classes.movieInfoWrapper}>
-                <span className={classes.movieName}>{props.movie.Title}</span>
+                <span className={classes.movieName} onClick={() => props.openMovieModal(props.movie.imdbID)}>{props.movie.Title}</span>
                 <span className={classes.year}>{props.movie.Year}</span>
                 <span className={classes.source}>{props.movie.imdbID}</span>
             </div>

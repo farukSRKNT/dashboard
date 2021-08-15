@@ -5,17 +5,19 @@ import Pagination from '@material-ui/lab/Pagination';
 import { fetchMovies } from '../../actions/index'
 import SearchBar from "../SearchBar";
 import MovieItem from "./MovieItem";
+import MovieModal from "./MovieModal";
 
 const useStyles = makeStyles((theme) => ({
     movieSearchWrapper: {
-        width: '60%',
+        width: 'calc(100% - 46px)',
         padding: '30px 23px'
     },
     movieSearhBar: {
         display: 'flex',
     },
     title: {
-        fontSize: '20px'
+        fontSize: '20px',
+        marginRight: '21px'
     },
     searchButton: {
         height: '30px',
@@ -24,12 +26,12 @@ const useStyles = makeStyles((theme) => ({
         color: 'white',
         fontSize: '12px'
     },
-    yearBar: {
-        width: '82px !important',
-    },
     pagination: {
         float: 'right',
-        marginTop: '10px'
+        marginTop: '10px',
+        "& .MuiPaginationItem-root": {
+            color: "#4C8DEB"
+        }
     },
   }))
 
@@ -42,6 +44,18 @@ function MovieSearch({searchData, fetchMovies}) {
     const [page, setPage] = useState(1);
     const [year, setYear] = useState('');
     const [title, setTitle] = useState('');
+    const [open, setOpen] = useState(false);
+    const [movieID, setmovieID] = useState('');
+
+    const handleOpen = (movieID) => {
+      setOpen(true);
+      setmovieID(movieID)
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
+  
 
     useEffect(() => {
         fetchMovies(page, title || 'Batman', year)
@@ -61,7 +75,6 @@ function MovieSearch({searchData, fetchMovies}) {
 
 
     const searchMovie = () => {
-        debugger
         setPage(1);
         fetchMovies(page, title, year)
     }
@@ -71,16 +84,17 @@ function MovieSearch({searchData, fetchMovies}) {
             <div className={classes.movieSearhBar}>
                 <span className={classes.title}>Movies</span>
                 <SearchBar placeholder="Batman" onChange={handleTitleChange} />
-                <SearchBar placeholder="Year" width="82px" className={classes.yearBar} onChange={handleYearChange}/>
+                <SearchBar placeholder="Year" width="82px" onChange={handleYearChange}/>
                 <Button variant="contained" className={classes.searchButton} onClick={searchMovie}>
                     Search 
                 </Button>
             </div>
             {searchData && searchData.movies && searchData.movies.map((movie, index) => (
-                <MovieItem key={`searched-movie-${index}`} movie={movie} index={index}/>
+                <MovieItem key={`searched-movie-${index}`} movie={movie} index={index} openMovieModal={handleOpen}/>
             ))}
-            <Pagination count={getPageCount(searchData.totalMovies)} color="primary" page={page} onChange={handlePageChange}
+            <Pagination count={getPageCount(searchData.totalMovies)} page={page} onChange={handlePageChange}
                         className={classes.pagination}/>
+            <MovieModal onClose={handleClose} onOpen={handleOpen} open={open} movieID={movieID}/>
         </div>
     )
 }
