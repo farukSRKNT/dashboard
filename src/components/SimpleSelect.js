@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import { InputBase } from '@material-ui/core';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import React, { useState } from 'react'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+import { InputBase } from '@material-ui/core'
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
-}));
+}))
 
 const BootstrapInput = withStyles((theme) => ({
   root: {
@@ -43,20 +43,20 @@ const BootstrapInput = withStyles((theme) => ({
     ].join(','),
     '&:focus': {
       border: 'none',
-      backgroundColor: 'white'
+      backgroundColor: 'white',
     },
   },
-}))(InputBase);
+}))(InputBase)
 
 export default function SimpleSelect(props) {
-  const classes = useStyles();
+  const classes = useStyles()
   const [selectedOption, setSelectedOption] = useState(props.options[0].value)
 
   const handleChange = (event) => {
     const { value } = event.target
     setSelectedOption(value)
     props.handleChange(value)
-  } 
+  }
 
   return (
     <div>
@@ -67,13 +67,15 @@ export default function SimpleSelect(props) {
           value={selectedOption}
           onChange={handleChange}
           input={<BootstrapInput />}
-          IconComponent = {KeyboardArrowDownIcon}
+          IconComponent={KeyboardArrowDownIcon}
         >
-          {props.options.map(option => (
-            <MenuItem value={option.value} key={option.value}>{option.name}</MenuItem>
+          {props.options.map((option) => (
+            <MenuItem value={option.value} key={option.value}>
+              {option.name}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>
     </div>
-  );
+  )
 }
