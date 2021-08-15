@@ -21,13 +21,13 @@ function App() {
     <Router>
       <div style={{ display: 'flex' }}>
       <Sidebar></Sidebar>
-      <div className="container">
+      <div>
         <Header></Header>
         <Switch>
           <Route exact path="/">
-            <Container>
+            <div className="container">
               <Home></Home>
-            </Container>
+            </div>
           </Route>
           <Route exact path="/feed">
             <Container>
