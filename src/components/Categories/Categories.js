@@ -15,7 +15,7 @@ import SimpleSelect from '../SimpleSelect'
 
 const useStyles = makeStyles((theme) => ({
   categoriesWrapper: {
-    width: '40%',
+    width: '100%',
     height: '351px',
     marginRight: '17px',
     marginBottom: '17px'
@@ -37,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
   },
   colorWrapper: {
     display: 'flex',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    flexWrap: 'wrap'
   },
   category: {
     display: 'flex'
