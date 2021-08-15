@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { InputBase } from '@material-ui/core';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -47,13 +48,15 @@ const BootstrapInput = withStyles((theme) => ({
   },
 }))(InputBase);
 
-export default function SimpleSelect() {
+export default function SimpleSelect(props) {
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
+  const [selectedOption, setSelectedOption] = useState(props.options[0].value)
 
   const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+    const { value } = event.target
+    setSelectedOption(value)
+    props.handleChange(value)
+  } 
 
   return (
     <div>
@@ -61,13 +64,14 @@ export default function SimpleSelect() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={selectedOption}
           onChange={handleChange}
           input={<BootstrapInput />}
+          IconComponent = {KeyboardArrowDownIcon}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {props.options.map(option => (
+            <MenuItem value={option.value} key={option.value}>{option.name}</MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>
