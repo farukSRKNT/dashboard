@@ -7,7 +7,7 @@ import { ResponsiveContainer, PieChart, Pie, Cell, Sector } from 'recharts'
 
 import SimpleSelect from '../SimpleSelect'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   categoriesWrapper: {
     width: '100%',
     height: '351px',
@@ -54,7 +54,6 @@ const SELECT_OPTIONS = [
 ]
 
 const renderActiveShape = (props, movieCount) => {
-  console.log(movieCount)
   const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill } = props
 
   return (
@@ -85,7 +84,7 @@ const renderActiveShape = (props, movieCount) => {
   )
 }
 
-export default function Categories(props) {
+export default function Categories() {
   const classes = useStyles()
   const categories = useSelector((state) => state.categories)
   const categoriesMovieCount = useSelector(

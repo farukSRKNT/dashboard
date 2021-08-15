@@ -7,7 +7,7 @@ import SearchBar from '../SearchBar'
 import MovieItem from './MovieItem'
 import MovieModal from './MovieModal'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   movieSearchWrapper: {
     width: 'calc(100% - 46px)',
     padding: '30px 23px',

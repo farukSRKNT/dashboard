@@ -1,3 +1,4 @@
+import React from 'react'
 import { makeStyles, alpha } from '@material-ui/core'
 import { InputBase } from '@material-ui/core'
 

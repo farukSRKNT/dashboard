@@ -1,6 +1,6 @@
+import React from 'react'
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
 import { Container, ThemeProvider } from '@material-ui/core'
 import theme from './theme.js'
 import Sidebar from './components/Sidebar'

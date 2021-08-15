@@ -10,7 +10,7 @@ const icons = {
   3: GeneratedIcon,
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   activityItem: {
     display: 'flex',
     height: 'fit-content',

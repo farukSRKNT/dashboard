@@ -10,7 +10,7 @@ const data = [
   { name: 'lorem ipsum dolar sit amet', score: 9.2 },
 ]
 
-export default function TopMovies(Props) {
+export default function TopMovies() {
   const classes = useStyles()
 
   return (

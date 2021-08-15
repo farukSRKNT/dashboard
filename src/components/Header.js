@@ -1,3 +1,4 @@
+import React from 'react'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography, Badge } from '@material-ui/core'
@@ -5,7 +6,7 @@ import SearchBar from './SearchBar'
 import NotificationsIcon from '../assets/icons/notifications.svg'
 import ProfilePic from '../assets/images/profile-pic.png'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   header: {
     alignItems: 'center',
     display: 'flex',
@@ -45,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Header({ movieHistoryData }) {
   const classes = useStyles()
-  console.log(movieHistoryData)
 
   return (
     <div className={classes.header}>

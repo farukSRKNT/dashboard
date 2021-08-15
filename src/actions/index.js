@@ -30,7 +30,6 @@ export const fetchMovies = (page, title, year) => {
       )
       .then((response) => {
         if (response.data && response.data.Response === 'True') {
-          console.log(response)
           dispatch(fetchMoviesSuccess(response.data))
         } else {
           console.error('RESPONSE IS FALSE')

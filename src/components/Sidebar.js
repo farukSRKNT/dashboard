@@ -1,3 +1,4 @@
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { NavLink } from 'react-router-dom'
 import { Drawer, Icon } from '@material-ui/core'
@@ -7,7 +8,7 @@ import FeedIcon from '../assets/icons/feed.svg'
 import LabelIcon from '../assets/icons/label.svg'
 import UserGroupIcon from '../assets/icons/user-group.svg'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   drawerPaper: {
     width: 'inherit',
     backgroundImage: 'linear-gradient(#4C8DEB, #4C60EB);',
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function Sidebar(Props) {
+export default function Sidebar() {
   const classes = useStyles()
 
   return (

@@ -1,3 +1,4 @@
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
 import Categories from '../components/Categories/Categories'
@@ -6,7 +7,7 @@ import TopMovies from '../components/TopMovies/TopMovies'
 import Movies from '../components/MovieSearch/MovieSearch'
 import Activity from '../components/Activity/Activity'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   row: {
     display: 'flex',
   },
@@ -17,26 +18,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function Home(Props) {
+export default function Home() {
   const classes = useStyles()
 
   return (
     <>
       <div className={classes.title}>Dashboard</div>
-      {/* <div className={classes.row}>
-                <div style={{display: 'block'}}>
-                    <div className={classes.row}>
-                    <Categories />
-                    <WatchTime />
-                    </div>
-                    <div className={classes.row}>
-                    <TopMovies />
-                    <Movies />
-                    </div>
-                </div>
-                <Activity /> */}
-      {/* </div> */}
-      <Grid container xs={12}>
+      <Grid container item xs={12}>
         <Grid xs={12} sm={6} md={9} item container>
           <Grid item xs={12} md={5}>
             <Categories />

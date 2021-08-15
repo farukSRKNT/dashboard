@@ -29,7 +29,7 @@ module.exports = {
     'react/no-did-update-set-state': 'error',
     'react/no-unknown-property': 'error',
     'react/no-unused-prop-types': 'error',
-    'react/prop-types': 'error',
     'react/react-in-jsx-scope': 'error',
+    'react/prop-types': 0,
   },
 }

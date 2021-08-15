@@ -1,3 +1,4 @@
+import React from 'react'
 import { makeStyles } from '@material-ui/core'
 import SimpleBarChart from './SimpleBarChart'
 import { useSelector, useDispatch } from 'react-redux'
@@ -6,7 +7,7 @@ import { changeWatchTimeInterval } from '../../actions'
 import SimpleSelect from '../SimpleSelect'
 import { useEffect } from 'react'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   watchTimeWrapper: {
     height: '351px',
     width: '100%',

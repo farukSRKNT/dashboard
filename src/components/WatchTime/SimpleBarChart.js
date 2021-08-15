@@ -1,5 +1,4 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core'
 import {
   BarChart,
   Bar,
@@ -21,11 +20,7 @@ const tickFormatter = (number) => {
   }
 }
 
-const useStyles = makeStyles((theme) => ({}))
-
 export default function SimpleBarChart(props) {
-  const classes = useStyles()
-
   return (
     <ResponsiveContainer width="100%" height="85%">
       <BarChart
