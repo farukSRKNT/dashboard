@@ -13,7 +13,7 @@ const icons = {
 const useStyles = makeStyles((theme) => ({
     activityItem: {
         display: 'flex',
-        height: '115px'
+        height: 'fit-content'
     },
     dateTime: {
 
@@ -55,34 +55,46 @@ const useStyles = makeStyles((theme) => ({
         height: 'fit-content',
         padding: '10px 10px 12px'
     },
-    title: {
-
-    },
-    content: {
+    sendMoneyLink: {
+        display: 'block',
+        color: '#4C8DEB'
     }
 }))
 
+const highlightText = (text) => {
+    // change color of transactionId
+    let result = text.replace( /#\d+/,'<span style="color: #4C8DEB">$&</span>')
+    // make money anount bolder
+    result = result.replace(/\$\d+/,'<span style="color: #405169; font-weight: bold">$&</span>')
+
+    return result
+}
+
 export default function Activity(props) {
     const classes = useStyles()
+    const {activity} = props
 
     return (
         <div className={classes.activityItem}>
             <div className={classes.dateTime}>
-                <div className={classes.time}>{props.activity.time}</div>
-                <div className={classes.date}>{props.activity.date}</div> 
+                <div className={classes.time}>{activity.time}</div>
+                <div className={classes.date}>{activity.date}</div> 
             </div>
             <div className={classes.iconLine}>
                 <div className={classes.iconWrapper}>
-                    <img src={icons[props.activity.activityType]} width={13} height={12} alt="activity type"/>
+                    <img src={icons[activity.activityType]} width={13} height={12} alt="activity type"/>
                 </div>
                 <div className={classes.line}></div> 
             </div>
             <div className={classes.messageBox}>
                 <div className={classes.title}>
-                    {props.activity.title}
+                    {activity.title}
                 </div>
                 <div className={classes.content}>
-                    {props.activity.content}
+                    <span dangerouslySetInnerHTML={{ __html: highlightText(activity.content) }} />
+                    {activity.activityType === '3' && 
+                        <a href='http://www.sendmoney.com' rel='noreferrer' target="_blank" className={classes.sendMoneyLink}>Send now</a>
+                    }
                 </div>
             </div>
         </div>

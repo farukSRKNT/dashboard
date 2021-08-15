@@ -43,7 +43,7 @@ const data = [
 
 const useStyles = makeStyles((theme) => ({
     activityWrapper: {
-        width: '25.5%'
+        width: '100%'
     },
     activityListTitle: {
         fontSize: '20px',
@@ -59,7 +59,7 @@ export default function Activity(Props) {
 
     return (
         <div className={classes.activityWrapper}>
-            <div className={classes.activityListTitle} >Activty</div>
+            <div className={classes.activityListTitle} >Activity</div>
             <div className={classes.activityList}>
                 {data.map((activity, index) => (
                     <ActivityItem key={`activity-${index}`} activity={activity}/>
